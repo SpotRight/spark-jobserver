@@ -211,7 +211,8 @@ lazy val commonSettings = Defaults.coreDefaultSettings ++ dirSettings ++ implici
   crossPaths   := true,
   scalaVersion := sys.env.getOrElse("SCALA_VERSION", "2.11.8"),
   dependencyOverrides += "org.scala-lang" % "scala-compiler" % scalaVersion.value,
-  publishTo    := Some(Resolver.file("Unused repo", file("target/unusedrepo"))),
+  publishTo := com.spotright.Settings.publishToNexus(version.value), // spotright
+  //publishTo    := Some(Resolver.file("Unused repo", file("target/unusedrepo"))),
   // scalastyleFailOnError := true,
   runScalaStyle := {
     org.scalastyle.sbt.ScalastylePlugin.scalastyle.in(Compile).toTask("").value
@@ -245,7 +246,8 @@ lazy val scoverageSettings = {
 
 lazy val publishSettings = Seq(
   licenses += ("Apache-2.0", url("http://choosealicense.com/licenses/apache/")),
-  bintrayOrganization := Some("spark-jobserver")
+  publishMavenStyle := com.spotright.Settings.pubMavenStyle // spotright
+  //bintrayOrganization := Some("spark-jobserver")
 )
 
 // This is here so we can easily switch back to Logback when Spark fixes its log4j dependency.
