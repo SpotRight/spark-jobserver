@@ -61,8 +61,10 @@ object Dependencies {
   )
 
   lazy val cassandraDeps = Seq(
-    "com.datastax.cassandra" % "cassandra-driver-core" % cassandra,
+    "com.datastax.cassandra" % "cassandra-driver-core" % cassandra classifier("shaded")
+      excludeAll(ExclusionRule("io.netty")),
     "com.datastax.cassandra" % "cassandra-driver-mapping" % cassandra
+      exclude("com.datastax.cassandra", "cassandra-driver-core")
   )
 
   lazy val logbackDeps = Seq(
