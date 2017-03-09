@@ -29,7 +29,7 @@ object Assembly {
 
     /**
       * Needed for jar built and included on spark classpath, but won't work for starting jobserver on js01
-      *
+      */
     , assemblyShadeRules in assembly := {
       val shadePackage = "shade.spark.jobserver"
       Seq(
@@ -39,6 +39,5 @@ object Assembly {
         ).inAll
       )
     }
-      */
   )
 }
