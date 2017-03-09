@@ -1,5 +1,8 @@
 # Preparing Spark-JobServer for SpotRight
 
+** This build process and branch is to build the tar.gz deployment
+of jobserver 
+
 1. cd to top of project
 
 1. create a link of job-server/config to config
@@ -14,4 +17,4 @@
 
     bash bin/server_package.sh ip
 
-4. in /tmp/spark-jobserver find the jar and a tar.gz that can deploy the jobserver
+4. in /tmp/spark-jobserver find a tar.gz that can deploy the jobserver
