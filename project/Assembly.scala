@@ -26,5 +26,19 @@ object Assembly {
     // assemblyShadeRules in assembly := Seq(
     //   ShadeRule.rename("shapeless.**" -> "sjs.shapeless.@1").inAll
     // )
+
+    /**
+      * Needed for jar built and included on spark classpath, but won't work for starting jobserver on js01
+      *
+    , assemblyShadeRules in assembly := {
+      val shadePackage = "shade.spark.jobserver"
+      Seq(
+        ShadeRule.rename("com.google.common.**" -> s"$shadePackage.google.common.@1").inAll,
+        ShadeRule.rename(
+          "com.google.thirdparty.publicsuffix.**" -> s"$shadePackage.google.thirdparty.publicsuffix.@1"
+        ).inAll
+      )
+    }
+      */
   )
 }
